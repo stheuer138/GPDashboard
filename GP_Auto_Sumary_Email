@@ -1,0 +1,60 @@
+#weekly summary email - easy to email, difficult to 
+#pulls data from excel - will be interesting
+#shows goal for GP
+#shows breakdown of gp/site between trads, orgs, and trash
+#maybe add a line graph for each site w/ segments for og, tr,and rub
+
+import win32com.client as win32
+from datetime import datetime
+import os
+import openpyxl
+from openpyxl import workbook
+
+
+path = 'C:\\Users\\STheuer\\Documents\\Sublime Projects\\GP Summary Email Project\\Campbell\'s Master Baseline.xlsx'
+wb = openpyxl.load_workbook(path)
+#setting active sheet to the baseline sheet and declaring worksheet variable
+wb.active = wb['PivotTable']
+ws = wb.active
+
+Ashland = {'Organics':'', 'Recycling':'', 'Rubbish':''}
+Ashland['Organics'] = round(ws.cell(row = 5, column = 2).value,2)
+Ashland['Recycling'] = round(ws.cell(row = 6, column = 2).value + ws.cell(row = 9, column = 2).value,2)
+Ashland['Rubbish'] = round(ws.cell(row = 7, column = 2).value + ws.cell(row = 10, column = 2).value,2)
+#grab the site names
+#put the site data by stream with the site names
+print(Ashland)
+
+def send_email():
+	#outlook = win32.Dispatch('outlook.application')
+	#mail = outlook.CreateItem(0)
+	pass
+
+def get_data():
+	#initialize all dicitonaries
+	Richmond={}
+	Willard={} #need to sum two locations
+	Denver={}
+	PacificFoods={}
+	Salem={} #need to sum two locations
+	Wilsonville={}
+	Charlotte={}
+	Goodyear={}
+	Hanover={}
+	Lakeland={}
+	Maxton={}
+	Pineville={}
+	Bellingham={}
+	Indianapolis={}
+	Jeffersonville={}
+	Paris = {}
+	Schenectady = {}
+	WoodDale={}
+
+
+	#return an array of dictionaries
+	Locations = [Ashland, Bellingham, Richmond, Willard, Denver, PacificFoods, Salem, Wilsonville, Charlotte, Goodyear, Hanover, Lakeland, Maxton, Pineville, Indianapolis, Jeffersonville, Paris, Schenectady, WoodDale]
+	pass
+
+def format_data():
+	pass
